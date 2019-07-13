@@ -34,6 +34,7 @@ resource "aws_lambda_function" "EC2DashboardUpdater" {
   handler          = "ec2DashboardUpdater.handler"
   timeout          = "60"
   runtime          = "nodejs8.10"
+  source_code_hash = "${base64sha256(file("functions/ec2DashboardUpdater.zip"))}"
   environment {
     variables = {
       AWS_DASHBOARDS   =  "[{\"dashboardName\": \"dashboard\", \"ec2DescribeInstanceParams\": { \"Filters\": [{\"Name\": \"tag:site\", \"Values\": [ \"site_name\"]}]}}]"
