@@ -28,7 +28,7 @@ resource "aws_cloudwatch_dashboard" "dashboard" {
 # lambda function which update EC2 metrics of CloudWatch
 
 resource "aws_lambda_function" "EC2DashboardUpdater" {
-  filename         = "../functions/ec2DashboardUpdater.zip"
+  filename         = "functions/ec2DashboardUpdater.zip"
   function_name    = "EC2DashboardUpdater"
   role             = "${aws_iam_role.Lambda-EC2DashboardUpdater-role.arn}"
   handler          = "ec2DashboardUpdater.handler"
